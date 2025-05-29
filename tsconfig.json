@@ -3,5 +3,16 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+ "compilerOptions": {
+    "jsx": "react-jsx",                // or "react-jsx" if you prefer
+    "jsxImportSource": "preact",      // 👈 CRUCIAL: tells TS to use Preact's JSX types
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "types": ["vite/client"]
+  }
 }
