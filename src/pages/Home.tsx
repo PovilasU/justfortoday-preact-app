@@ -10,7 +10,7 @@ export default function Home(_props: HomeProps) {
   return (
     <>
       <h1>Home Page</h1>
-      <p>Welcome to the Just for Today Preact App! 124</p>
+      <p>Welcome to the Just for Today Preact App! 1245</p>
     </>
   );
 }
