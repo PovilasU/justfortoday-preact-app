@@ -8,9 +8,6 @@ export default function Header() {
     <>
       <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container px-4 px-lg-5">
-          {/* <a class="navbar-brand" href="index.html">
-            Pagrindinis
-          </a> */}
           <Link class="navbar-brand" href={`${BASE_PATH}/`}>
             Pagrindinis
           </Link>
