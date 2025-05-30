@@ -14,8 +14,13 @@
 // }
 
 // import { h } from "preact";
+// import Collapse from "bootstrap/js/dist/collapse";
+// import Dropdown from "bootstrap/js/dist/dropdown";
+import "./styles/styles.css";
 import AppRouter from "./routes/AppRouter";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 // import Footer from "./components/Footer";
 
 export default function App() {
@@ -23,7 +28,7 @@ export default function App() {
     <>
       <Header />
       <AppRouter />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
