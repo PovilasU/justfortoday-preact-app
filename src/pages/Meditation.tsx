@@ -19,8 +19,53 @@ export default function Meditation(_props: MeditationProps) {
     return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   };
 
-  const startTimer = () => {
-    if (timeLeft <= 0) {
+  // const startTimer = () => {
+  //   if (timeLeft <= 0) {
+  //     alert("Pirmiausia nustatykite laiką.");
+  //     return;
+  //   }
+
+  //   if (!musicMuted && musicRef.current) {
+  //     musicRef.current.play();
+  //   }
+
+  //   setIsRunning(true);
+
+  //   intervalRef.current = window.setInterval(() => {
+  //     setTimeLeft((prev) => {
+  //       if (prev <= 1) {
+  //         clearInterval(intervalRef.current!);
+  //         if (musicRef.current) {
+  //           musicRef.current.pause();
+  //           musicRef.current.currentTime = 0;
+  //         }
+  //         alarmRef.current?.play();
+  //         setIsRunning(false);
+  //         return 0;
+  //       }
+  //       return prev - 1;
+  //     });
+  //   }, 1000);
+  // };
+
+  const stopTimer = () => {
+    clearInterval(intervalRef.current!);
+    setIsRunning(false);
+    if (musicRef.current) {
+      musicRef.current.pause();
+      musicRef.current.currentTime = 0;
+    }
+    setTimeLeft(0);
+  };
+
+  const setTime = (minutes: number) => {
+    clearInterval(intervalRef.current!);
+    setTimeLeft(minutes * 60);
+    setIsRunning(false);
+    startTimerWithTime(minutes * 60);
+  };
+  const startTimerWithTime = (seconds: number) => {
+    if (seconds <= 0) {
       alert("Pirmiausia nustatykite laiką.");
       return;
     }
@@ -46,23 +91,6 @@ export default function Meditation(_props: MeditationProps) {
         return prev - 1;
       });
     }, 1000);
-  };
-
-  const stopTimer = () => {
-    clearInterval(intervalRef.current!);
-    setIsRunning(false);
-    if (musicRef.current) {
-      musicRef.current.pause();
-      musicRef.current.currentTime = 0;
-    }
-    setTimeLeft(0);
-  };
-
-  const setTime = (minutes: number) => {
-    clearInterval(intervalRef.current!);
-    setTimeLeft(minutes * 60);
-    setIsRunning(false);
-    startTimer(); // Automatically start
   };
 
   const setCustomTime = () => {
@@ -129,9 +157,9 @@ export default function Meditation(_props: MeditationProps) {
 
       {/* Controls */}
       <div className="mb-4">
-        <button className="btn btn-success btn-lg me-2" onClick={startTimer}>
+        {/* <button className="btn btn-success btn-lg me-2" onClick={startTimer}>
           Pradėti
-        </button>
+        </button> */}
         <button className="btn btn-danger btn-lg me-2" onClick={stopTimer}>
           Stabdyti
         </button>
